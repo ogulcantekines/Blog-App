@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card p-4 shadow-sm rounded-4 bg-white">
+        <h2 class="mb-4 text-center text-primary">✏️ Yazıyı Düzenle</h2>
+        <form action="/edit/<%= post.id %>" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Başlık</label>
+            <input type="text" id="title" name="title" value="<%= post.title %>" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">İçerik</label>
+            <textarea id="content" name="content" rows="6" class="form-control" required><%= post.content %></textarea>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Kaydet</button>
+            <a href="/" class="btn btn-secondary">İptal</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<%- include("partials/toast", { message: null }) %>
+<%- include("partials/footer") %>

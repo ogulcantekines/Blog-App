@@ -1,0 +1,128 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid">
+  <div class="row">
+    
+    <%- include("partials/sidebar.ejs") %>
+
+    <!-- Ana İçerik -->
+    <div class="col-md-9 p-4">
+      <h1 class="mb-4">📊 Dashboard</h1>
+
+      <div class="row g-4">
+
+        <div class="col-12 col-md-4">
+          <div class="card shadow-sm border-0 bg-primary text-white h-100">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-3"><i class="bi bi-card-list me-2"></i>Toplam Post</h6>
+              <h3 class="card-title"><%= totalPosts %></h3>
+
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-12 col-md-4">
+          <div class="card shadow-sm border-0 bg-success text-white h-100">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-4"><i class="bi bi-pencil-fill me-2"></i>Son Post Başlığı</h6>
+              <p class="card-text"><%= lastPostTitle %></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-12 col-md-4">
+          <div class="card shadow-sm border-0 bg-info text-white h-100">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-4"><i class="bi bi-clock-history me-2"></i>Son Post Tarihi</h6>
+              <p class="card-text"><%= lastPostDate %></p>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Haftalık Post Sayısı</h5>
+          <canvas id="postChart" height="100"></canvas>
+        </div>
+      </div>
+
+
+
+      
+<!--BURASI GRAFİĞİN OLDUĞU YER-->
+  <script>
+    const ctx = document.getElementById('postChart').getContext('2d');
+    const postChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Pzt', 'Salı', 'Çar', 'Perş', 'Cuma', 'Cmt', 'Paz'],
+        datasets: [{
+          label: 'Post Sayısı',
+          data: [3, 5, 2, 4, 1, 0, 2], // dummy data
+          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }
+      }
+    });
+  </script>
+      
+      
+
+      <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-4">Son 3 Post</h5>
+    
+          <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Başlık</th>
+                    <th>Özet</th>
+                    <th>Tarih</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% last3Posts.forEach(post => { %>
+                    <tr>
+                      <td>
+                        <a href="/posts/<%= post.id %>" class="text-decoration-none text-primary fw-bold">
+                          <%= post.title %>
+                        </a>
+                      </td>
+                      <td><%= post.content.substring(0, 50) %>...</td>
+                      <td><%= post.date %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+              
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+  
+</div>
+</div>
+
+
+
+<%- include("partials/toast", { message: null }) %>
+<%- include("partials/footer") %>

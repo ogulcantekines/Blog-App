@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="compose-form">
+      <h2 class="mb-4">Yeni Blog Postu Oluştur</h2>
+      <form action="/compose" method="POST">
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Kategori</label>
+          <select name="postCategory" id="category" class="form-select">
+            <option value="Genel">Genel</option>
+            <option value="Technology">Teknoloji</option>
+            <option value="Music">Müzik</option>
+            <option value="Personal">Kişisel</option>
+            <option value="Education">Eğitim</option>
+          </select>
+        </div>
+
+
+
+        <div class="mb-3">
+          <label for="postTitle" class="form-label">Başlık</label>
+          <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Başlık giriniz..." required />
+        </div>
+
+        <div class="mb-3">
+          <label for="postContent" class="form-label">İçerik</label>
+          <textarea class="form-control" id="postContent" name="postContent" rows="6" placeholder="İçeriği buraya yaz..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">Gönder</button>
+
+        
+      </form>
+    </div>
+
+
+    
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <%- include("partials/footer.ejs") %>

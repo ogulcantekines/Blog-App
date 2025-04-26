@@ -1,0 +1,55 @@
+
+<%- include("partials/header.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+        <%- include("partials/sidebar.ejs") %>
+
+          
+      <!-- Main Content -->
+      <div class="col-md-9 p-4">
+        <h1 class="mb-4">Blog Yazıları</h1>
+
+
+        <a href="/compose" class="btn btn-primary mb-4">+ Yeni Post</a>
+
+        <% posts.forEach(function(post) { %>
+            <div class="post-preview d-flex justify-content-between align-items-start mb-4 p-3 bg-white rounded shadow-sm">
+              
+              <!-- Yazı Bilgisi -->
+              <div class="flex-grow-1">
+                <h2 class="mb-2"><a href="/posts/<%= post.id %>" class="text-decoration-none text-primary"><%= post.title %></a></h2>
+                <p class="text-muted"><%= post.content.substring(0, 100) %>...</p>
+                <p class="text-muted small mb-0">🕒 <%= post.date %></p>
+                
+              </div>
+
+              <!-- Sil / Düzenle Butonları -->
+              <div class="d-flex gap-2">
+                <a href="/edit/<%= post.id %>" class="btn btn-sm btn-warning">Düzenle</a>
+                <form action="/delete" method="POST" onsubmit="return confirm('Bu postu silmek istediğine emin misin?')">
+                  <input type="hidden" name="postId" value="<%= post.id %>">
+                  <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                </form>
+              </div>
+
+          
+              
+            </div>
+          <% }); %>
+          
+      </div>
+
+      
+      
+
+    </div>
+ </div>
+
+    
+    <%- include("partials/toast", { message: message }) %>
+
+
+  <%- include("partials/footer") %>
+ 

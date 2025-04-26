@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <%- include("partials/sidebar.ejs") %>
+
+    <div class="col-md-9 p-4">
+      <h2 class="mb-4">"<%= query %>" için sonuçlar</h2>
+      <hr>
+
+      <% if (posts.length === 0) { %>
+        <p>Aradığınız kelimeye uygun yazı bulunamadı.</p>
+      <% } else { %>
+        <% posts.forEach(post => { %>
+          <div class="mb-3">
+            <h4>
+              <a href="/posts/<%= post.id %>" class="text-decoration-none text-primary">
+                <%= post.title %>
+              </a>
+            </h4>
+            <p class="text-muted small">🕒 <%= post.date %></p>
+          </div>
+        <% }) %>
+      <% } %>
+
+    </div> <!-- col-md-9 -->
+    
+  </div> <!-- row -->
+</div> <!-- container-fluid -->
+
+<%- include("partials/footer") %>

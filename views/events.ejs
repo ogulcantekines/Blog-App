@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include("partials/sidebar") %>
+
+    <div class="col-md-10 p-4">
+      <h1 class="mb-5 text-primary">📅 Yaklaşan Etkinlikler</h1>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm event-card h-100">
+            <h5 class="mb-2 text-success">Yeni Blog Serisi Başlıyor 📚</h5>
+            <p class="text-muted mb-1">1 Mayıs 2025</p>
+            <p>Yazılım öğrenme yolculuğumla ilgili haftalık blog serisi başlıyor!</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm event-card h-100">
+            <h5 class="mb-2 text-warning">Almanca Öğrenme Günlüğü</h5>
+            <p class="text-muted mb-1">10 Mayıs 2025</p>
+            <p>Almanca A2-B1 geçiş sürecimi anlatan yazı dizisi geliyor.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm event-card h-100">
+            <h5 class="mb-2 text-danger">Yazılım Projesi Yayında 🚀</h5>
+            <p class="text-muted mb-1">20 Mayıs 2025</p>
+            <p>İlk tam fonksiyonel Node.js projem GitHub'da yayınlanacak!</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm event-card h-100">
+            <h5 class="mb-2 text-secondary">CV hazırlamak artık çok kolay</h5>
+            <p class="text-muted mb-1">31 Mayıs 2025</p>
+            <p>CV hazırlamakla ilgili her şey yakında! Takipete kalın.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

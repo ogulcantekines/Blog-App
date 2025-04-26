@@ -1,0 +1,36 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <%- include("partials/sidebar") %>
+
+    <!-- Main Content -->
+    <div class="col-md-9 p-4">
+      <h1 class="mb-4"><%= category %> Kategorisindeki Yazılar</h1>
+
+
+      <% if (posts.length > 0) { %>
+        <% posts.forEach(function(post) { %>
+          <div class="post-preview d-flex justify-content-between align-items-start mb-4 p-3 bg-white rounded shadow-sm">
+            <div class="flex-grow-1">
+              <h2 class="mb-2">
+                <a href="/posts/<%= post.id %>" class="text-decoration-none text-primary"><%= post.title %></a>
+              </h2>
+              <p class="text-muted small mb-0">🕒 <%= post.date %></p>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p class="text-muted">Bu kategoride henüz yazı yok.</p>
+      <% } %>
+      
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+    
+
+<%- include("partials/footer") %>

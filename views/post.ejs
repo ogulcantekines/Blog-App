@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <%- include("partials/sidebar") %>
+
+    <div class="col-md-9 p-4">
+      
+      <!-- Başlık ve Alt Çizgi -->
+      <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-2">
+        <h2 class="text-primary mb-3"><%= post.title %></h2>
+      </div>
+
+      <div class="d-flex flex-column">
+        
+        <p class="text-muted small mb-4">🕒 <%= post.date %></p>
+        <p class="lead"><%= post.content %></p>
+      </div>
+
+      <a href="/" class="btn btn-secondary mt-4">
+        ← Ana Sayfaya Dön
+      </a>
+
+    </div>
+
+  </div>
+</div>
+
+<%- include("partials/footer") %>
